@@ -15,9 +15,12 @@ jr z,MathAdd
 ;so we compare it to 1 now, z80 again, subtracts 1 from a, which equals zero, so we jump to MathSub
 cp 1
 jr z,MathSub
-
+;and so on
 cp 2
 jr z,MathMult
+
+cp 3
+jr z,MathDiv
 
 ;if a didn't equal zero before this line, we haven't jumped, and aren't going to do anything, so reset a
 ld a,0
@@ -58,4 +61,26 @@ MathMultAgain:
 	;djnz decreases b and jumps to the designated label if b does not equal 0, doesn't set a flag
 	djnz MathMultAgain
 jr SaveResult
-	
+
+MathDiv:
+	;Load a with whatever value is stored at c
+	ld a,c
+	;Compare a-0 to 0
+	cp 0
+	;if a is 0, jump to save result
+	jr z, SaveResult
+	;If a is not 0, Load d with the value 0
+	ld d,0
+MathDivAgain:
+	;subtract the value at b from a
+	sub b
+	;increment d
+	inc d
+	;repeat until we hit a negative number (over 8 bits)
+	jp nc, MathDivAgain
+	;if we hit a negative number (over 8 bits), we've gone 1 times over our answer so decrement d again
+	dec d
+	;Load the value at d into a
+	ld a,d
+;Jump to up to SaveResult
+jr SaveResult
