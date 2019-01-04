@@ -1,7 +1,7 @@
 ;Definition of a symbol, pointing at a command in the CPC Firmware.
 ;It will print the value held in the accumulator to the screen as a character.
 PrintChar equ &BB5A
-;Same again, but this will wait until a key is pressed and store it in the accumulator
+;Same again, but this will wait until a key is pressed and store it in the accumulator.
 WaitChar equ &BB06
 
 org &8000
