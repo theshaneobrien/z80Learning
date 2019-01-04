@@ -1,3 +1,4 @@
+;This was just a proof of concept to use the stack
 PrintChar equ &BB5A
 WaitChar equ &BB06
 
