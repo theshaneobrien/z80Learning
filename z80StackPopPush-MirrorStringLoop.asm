@@ -4,7 +4,6 @@ StrnLeng equ 5
 
 org &8100
 
-
 ld b,StrnLeng
 
 EnterCharacters:
