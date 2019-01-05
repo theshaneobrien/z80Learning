@@ -6,19 +6,18 @@ ld a,(&9000)
 ld bc,(&9001)
 
 ;if the accumulator (a) is 0, we are adding
-;compare subtracts 0 from a, but doesn't store it anywhere
+;Compare the accumulator to 0 (a-0 = 0), sets the z flag if a is 0 (other flags are nz, c, nc)
 ;0=Add in basic, zero from zero equals zero, so jump to MathAdd, "jr z"
 cp 0
 jr z,MathAdd
 ;if a is 1, we are subtracting
 ;1=Subtract in basic, so if we entered one, the above would have equalled -1 and not jumped
-;so we compare it to 1 now, z80 again, subtracts 1 from a, which equals zero, so we jump to MathSub
+;Compare the accumulator to 1 (a-1 - 0), sets the z flag if a is 1
 cp 1
 jr z,MathSub
 ;and so on
 cp 2
 jr z,MathMult
-
 cp 3
 jr z,MathDiv
 
@@ -49,9 +48,9 @@ jr SaveResult
 MathMult:
 	;Load a with whatever is stored at b
 	ld a,b
-	;compare if a-0 is equal to 0, cp sets a flag
+	;Compares the accumulator to 0, sets the zero flag if it matches
 	cp 0
-	;if it is, save the result, jr doesn't set a flag
+	;Jump if the zero flag is set
 	jr z, SaveResult
 	;if it isn't, make a equal 0
 	ld a,0
@@ -65,9 +64,9 @@ jr SaveResult
 MathDiv:
 	;Load a with whatever value is stored at c
 	ld a,c
-	;Compare a-0 to 0
+	;Compare a to 0, sets a zero flag
 	cp 0
-	;if a is 0, jump to save result
+	;Jump if the zero flag is set
 	jr z, SaveResult
 	;If a is not 0, Load d with the value 0
 	ld d,0

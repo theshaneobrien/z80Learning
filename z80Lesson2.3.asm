@@ -22,7 +22,7 @@ FillAgain:
 	
 	;Decrement a by 1
 	dec a
-	;Compare A with 255, when A hits 0 and we Dec A, it becomes 255 (overflow)
+	;Compare A with 255, when A hits 0 and we dec A, it becomes 255 (overflow)
 	cp 255
 	;If A does not match 255, jump back to label FillAgain
 	jp nz, FillAgain
