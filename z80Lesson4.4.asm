@@ -10,7 +10,7 @@ org &8300
 	;Call Print Character
 	call PrintChar
 	;Numbers are passed as 16bit integers
-	;The first parameter location is passed by basic in IX
+	;The first parameter location is passed by basic into IX
 	;The data is passed in little Endian, it's backwards, so we load the larger part from IX+1 into A
 	ld a,(ix+1)
 	;OR takes an 8-bit input and compares it with the accumulator

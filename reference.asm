@@ -18,10 +18,16 @@ pop AF ;Pops the value off the stack into the designated register
 ;Flags
 z ;Zero flag is set
 nz ;Zero flag is not set/reset
-c ;Carry flag is set. 
+c ;Carry flag is set. >=
 	;Example - If we are subtracting 5 from 4, we will have -1, in 8bit math thats 255, the carry flag gets set, same if we go over 255.
 nc ;Carry flaf is not set/reset
 
-;Misc
+;Byte Stuff
 db 'string',255,'more stuff' ;The assembler will convert these to their equivalent bytes according to their ASCII code
 				;DB stands for define byte, it allows for one or more bytes, separated by commas.
+res 0,a ;Resets a to zero
+
+;1 bit = 1 binary unit
+;1 nibble = 4 bits
+;1 byte = 8 bits
+;1 word = 16 bits
