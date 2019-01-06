@@ -25,7 +25,12 @@ nc ;Carry flaf is not set/reset
 ;Byte Stuff
 db 'string',255,'more stuff' ;The assembler will convert these to their equivalent bytes according to their ASCII code
 				;DB stands for define byte, it allows for one or more bytes, separated by commas.
-res 0,a ;Resets a to zero
+res 7,a ;Resets specified register bit (A) to zero, res bit,register. Equiv to AND %10000000
+set 7,a ;Sets specified register bit (A) to one, set bit,register. Equiv to OR %10000000
+bit 7,a ;Tests specified register bit (A). Equiv to CP %10000000	 ld a,%10000000
+									;bit 7,a - would reset z
+									;bit 0,a -would set z
+nop	;Command that does nothing, useful for reserving bytes to be changed later on
 
 ;1 bit = 1 binary unit
 ;1 nibble = 4 bits
