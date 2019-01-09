@@ -36,3 +36,4 @@ nop	;Command that does nothing, useful for reserving bytes to be changed later o
 ;1 nibble = 4 bits
 ;1 byte = 8 bits
 ;1 word = 16 bits
+
